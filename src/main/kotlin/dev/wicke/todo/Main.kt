@@ -18,7 +18,7 @@ object PersonRepository {
         return toAsync(*persons.toTypedArray()).await()
     }
 
-    suspend fun getPerson(id: Int): Person {
+    suspend fun getPeople(id: Int): Person {
         val person = persons.find { it.id == id }
         return toAsync(person!!).await()
     }
@@ -37,7 +37,7 @@ object PersonController {
 
     suspend fun get(request: ServerRequest): Person {
         val id = request.pathVariable("id").toInt()
-        return PersonRepository.getPerson(id)
+        return PersonRepository.getPeople(id)
     }
 
     suspend fun delete(request: ServerRequest) {
